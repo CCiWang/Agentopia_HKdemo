@@ -366,7 +366,7 @@ document.getElementById('backFromPlaceholder').addEventListener('click', ()=>set
 
 document.querySelectorAll('[data-poi]').forEach(el=>{
   el.addEventListener('click', ()=>{
-    const key = el.dataset.poi; if(compactScreen.matches)setSidebar(true);
+    const key = el.dataset.poi; if(key==='mcp2'){location.href='mcp-central.html';return;} if(compactScreen.matches)setSidebar(true);
     infoPanel.querySelector('h3').textContent = el.textContent.trim().split(/\s+/).slice(0,4).join(' ');
     infoText.textContent = poiInfo[key] || '该地点说明稍后补充。'; modalTitle.textContent=el.textContent.trim(); modalText.textContent=infoText.textContent; modal.classList.add('open');
     document.querySelectorAll('#poiList .item').forEach(btn=>btn.classList.toggle('active', btn.dataset.poi === key));
@@ -403,6 +403,8 @@ document.querySelectorAll('.map-shell').forEach(shell=>{
 });
 const updateMapHint=()=>{const small=matchMedia('(max-width:700px), (max-height:500px)').matches;document.querySelector('.bottom-tip').firstChild.textContent=small?'左右滑动浏览地图 · 点击地区开始探索':'选择区域开始探索！';};
 updateMapHint();window.addEventListener('resize',updateMapHint);
+
+if(location.hash==='#polam')openPoLam();
 </script>
 </body>
 </html>
