@@ -97,6 +97,35 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;}
   .floating-card,.info-panel{position:absolute;max-width:calc(100% - 24px);width:calc(100% - 24px);right:12px;}
 }
 #poiList,.section-title{display:none} .app.local-mode #poiList{display:flex}.app.local-mode .section-title{display:block}.main{display:block}.stage{height:100%}.sidebar{position:absolute;left:20px;top:0;bottom:12px;z-index:9;width:250px}.sidebar.collapsed{width:36px}.map-shell{width:min(100%,calc((100dvh - 160px)*1.7778));height:auto;max-height:none}.map-shell.local{width:min(100%,calc((100dvh - 160px)*1.3333));height:auto}.poi button{font-size:clamp(9px,0.85vw,13px);padding:5px 7px;border-width:2px;border-radius:8px;white-space:nowrap}.info-panel{display:none}.floating-card{display:none}.local-toolbar{max-width:75%;top:8px}.mini-chip{cursor:pointer;padding:5px 9px;font-size:12px}.mini-chip.selected{background:#e6b4ff}.label-chip{cursor:pointer}.sidebar-inner{padding:12px}.item{padding:8px 10px}.bottom-tip{font-size:16px;padding:4px 12px 10px}.bottom-tip small{font-size:11px}.logo-pill{font-size:25px;padding:6px 16px}.topbar{padding:8px 20px}.map-shell.local .poi{z-index:3}@media(max-width:980px){.sidebar{width:210px;height:auto}.sidebar.collapsed{width:32px;height:auto}.sidebar .collapse-btn{top:12px;bottom:auto;right:-12px}.stage{min-height:0}.top-actions{gap:4px}.ui-btn{padding:5px 7px}.logo-pill{font-size:20px}.local-toolbar{top:5px;right:5px}.mini-chip{font-size:10px}}.brand-logo{display:block;width:clamp(145px,19vw,285px);height:auto;max-height:108px;object-fit:contain;filter:drop-shadow(0 4px 6px #24103966)} .topbar{padding-block:5px}
+
+/* Responsive controls and map canvas; preserve the desktop artwork. */
+.app{height:100vh;height:100dvh;grid-template-rows:auto minmax(0,1fr) auto}
+.main{min-width:0}.stage{container-type:size}.map-frame{overflow:auto;overscroll-behavior:contain}
+.map-shell{flex-shrink:0;width:min(calc(100cqw - 24px),calc((100cqh - 24px)*16/9));max-height:none}
+.map-shell.local{width:min(calc(100cqw - 24px),calc((100cqh - 90px)*4/3))}
+#polamView .map-frame{top:64px}.sidebar-inner{overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#a464db #f6ebff}.item{flex-shrink:0}.item>span:first-child{min-width:0;overflow-wrap:anywhere}
+.collapse-btn{width:44px;height:44px;right:-20px}.modal-card{max-height:calc(100dvh - 40px);overflow:auto}
+.world-zoom{transition:transform .82s cubic-bezier(.55,.02,.85,.35),filter .82s ease;will-change:transform}
+.world-zoom.zooming{transform:scale(4.6);filter:brightness(1.35) saturate(1.25) blur(1px)}
+.stage::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:12;opacity:0;background:radial-gradient(ellipse,transparent 20%,#fff1d9aa 70%,#fff8ed 100%)}
+.stage.traveling::after{animation:arrival-flash .84s ease-in both}.stage.traveling{pointer-events:none}
+.view.arriving{animation:arrival-settle .42s ease-out}
+@keyframes arrival-flash{0%,45%{opacity:0}85%{opacity:.8}100%{opacity:0}}
+@keyframes arrival-settle{from{opacity:.3;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
+@media(max-width:700px), (max-height:500px){
+.topbar{padding:6px 10px;gap:8px;flex-wrap:wrap}.brand-logo{width:130px;max-height:64px}.top-actions{gap:4px;flex-wrap:nowrap}.ui-btn{font-size:11px;padding:8px 6px;border-width:2px;border-radius:10px;min-height:40px}
+.main{padding:0 6px 6px}.stage{border-radius:16px}.bottom-tip{font-size:13px;padding:5px 8px max(8px,env(safe-area-inset-bottom))}.bottom-tip small{font-size:10px}
+.sidebar{left:8px;top:8px;bottom:8px;width:min(280px,calc(100vw - 64px));height:auto;transition:transform .25s;filter:drop-shadow(8px 0 14px #26143944)}
+.sidebar.collapsed{width:min(280px,calc(100vw - 64px));transform:translateX(calc(-100% - 8px))}.sidebar .collapse-btn{top:8px;right:-20px;bottom:auto}.sidebar.collapsed .collapse-btn{right:-44px}.sidebar-inner{border-radius:18px;padding:12px;overflow-y:auto}.side-title{padding-right:12px;font-size:16px}.item{min-height:54px}
+.map-shell{border-radius:14px;border-width:2px}.pin{width:30px;height:30px;border-width:2px}.pin:before{font-size:18px}.label-chip{padding:4px 6px;font-size:11px;border-width:2px;border-radius:8px}.label-chip small{display:none}
+#polamView .map-frame{top:108px;display:block;place-items:start;padding:10px;touch-action:pan-x pan-y}
+.map-shell.local{width:800px;height:600px;aspect-ratio:4/3;margin:0;max-width:none}.poi button{font-size:12px;padding:7px 8px;min-height:32px}
+.back-btn{top:8px;left:52px;font-size:12px;padding:8px 10px;min-height:40px}.local-toolbar{top:56px;left:10px;right:10px;max-width:none;flex-wrap:nowrap;justify-content:flex-start;gap:6px;overflow-x:auto;padding-bottom:4px}.mini-chip{flex-shrink:0;min-height:38px;font-size:12px}
+.placeholder{overflow:auto;display:block;padding:64px 12px 12px}.placeholder-card{width:100%;padding:18px}.placeholder-card h2{font-size:20px}.placeholder-white{height:130px;font-size:18px}.modal{padding:12px}.modal-card{padding:18px}
+}
+@media(max-width:380px){.topbar{justify-content:center}.brand-logo{width:110px;max-height:48px}.label-chip{font-size:10px}}
+@media(max-height:500px) and (orientation:landscape){.brand-logo{max-height:46px;width:120px}.topbar{padding-block:3px}.bottom-tip{font-size:12px;padding:2px 8px}.bottom-tip small{display:none}.sidebar{top:6px;bottom:8px}.local-toolbar{gap:4px}.back-btn{font-size:12px;padding:6px}.mini-chip{font-size:10px;padding:5px}}
+@media(prefers-reduced-motion:reduce){.world-zoom{transition:none}.world-zoom.zooming{transform:none;filter:none}.stage.traveling:after,.view.arriving{animation:none}.sidebar{transition:none}}
 </style>
 </head>
 <body>
@@ -261,7 +290,12 @@ const areaNames = {
 
 const poiInfo = {"mcp2": "新都城二期 MCP CENTRAL，位于宝琳站东北一侧，与车站连接。", "mcp3": "新都城三期 MCP DISCOVERY，位于宝琳站西侧，邻近茵怡花园。", "mcp1": "新都城一期 MCP ONE，位于宝琳站南侧。", "station": "港铁将军澳线宝琳站，连接新都城商场。", "pti": "公共交通换乘节点；图中位置为游戏化示意。", "bus": "欣景路巴士站 · Yan King Road bus stop。交通节点。位置根据参考地图的相对布局进行游戏化表达。", "serenity": "怡心园（Serenity Place）位于宝康路88号，宝琳站西南侧。由五座住宅楼组成。", "verbena": "茵怡花园 · Verbena Heights。住宅节点。位置根据参考地图的相对布局进行游戏化表达。", "polamestate": "宝林邨 · Po Lam Estate。住宅节点。位置根据参考地图的相对布局进行游戏化表达。", "yingming": "英明苑 · Ying Ming Court。住宅节点。位置根据参考地图的相对布局进行游戏化表达。", "yanming": "欣明苑 · Yan Ming Court。住宅节点。位置根据参考地图的相对布局进行游戏化表达。", "wellon": "慧安园 · Well On Garden。住宅节点。位置根据参考地图的相对布局进行游戏化表达。", "park": "宝翠公园 · Po Tsui Park。公园节点。位置根据参考地图的相对布局进行游戏化表达。", "sports": "宝林体育馆 · Po Lam Sports Centre。公园节点。位置根据参考地图的相对布局进行游戏化表达。", "polammall": "宝林商场 · Po Lam Shopping Centre。商场节点。位置根据参考地图的相对布局进行游戏化表达。", "plk": "保良局陆庆涛小学 · PLK Luk Hing Too Primary School。学校节点。位置根据参考地图的相对布局进行游戏化表达。", "lcp": "仁济医院靓次伯纪念中学 · YCH Lan Chi Pat Memorial Secondary School。学校节点。位置根据参考地图的相对布局进行游戏化表达。", "youth": "青年学院（邱子文） · Youth College (Yeo Chei Man)。学校节点。位置根据参考地图的相对布局进行游戏化表达。", "eduhk": "教大将军澳教学中心 · EdUHK TKO Study Centre。学校节点。位置根据参考地图的相对布局进行游戏化表达。", "polamroad": "宝琳北路 · Po Lam Road North。道路节点。位置根据参考地图的相对布局进行游戏化表达。", "pofung": "宝丰路 · Po Fung Road。道路节点。位置根据参考地图的相对布局进行游戏化表达。", "yanking": "欣景路 · Yan King Road。道路节点。位置根据参考地图的相对布局进行游戏化表达。", "mauyip": "贸业路 · Mau Yip Road。道路节点。位置根据参考地图的相对布局进行游戏化表达。", "pohong": "宝康路 · Po Hong Road。道路节点。位置根据参考地图的相对布局进行游戏化表达。"};
 
+let travelTimer;
+let traveling=false;
 function setView(name){
+  clearTimeout(travelTimer);traveling=false;worldZoom.classList.remove('zooming');document.querySelector('.stage').classList.remove('traveling');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('arriving'));
+  document.querySelector('.bottom-tip').firstChild.textContent=name==='polam'&&matchMedia('(max-width:700px), (max-height:500px)').matches?'滑动查看宝琳地图 · 点击地点了解详情':'选择区域开始探索！';
   document.querySelector('.app').classList.toggle('local-mode',name==='polam'); worldView.classList.toggle('active', name === 'world');
   placeholderView.classList.toggle('active', name === 'placeholder');
   polamView.classList.toggle('active', name === 'polam');
@@ -277,26 +311,31 @@ function openPoLam(){
   updateActiveArea('polam');
 }
 
-function animateToPoLam(){
-  updateActiveArea('polam');
-  worldZoom.classList.add('zooming');
-  setTimeout(()=>{
-    worldZoom.classList.remove('zooming');
-    openPoLam();
-  }, 700);
-}
+function animateToPoLam(){handleArea('polam');}
 
 function updateActiveArea(areaKey){
   document.querySelectorAll('#areaList .item').forEach(btn=>btn.classList.toggle('active', btn.dataset.area === areaKey));
 }
 
-collapseBtn.addEventListener('click', ()=>{
-  sidebar.classList.toggle('collapsed');
-  collapseBtn.textContent = sidebar.classList.contains('collapsed') ? '❯' : '❮';
-});
-
+function setSidebar(closed){
+ sidebar.classList.toggle('collapsed',closed);collapseBtn.textContent=closed?'☰':'❮';
+ collapseBtn.setAttribute('aria-expanded',String(!closed));collapseBtn.setAttribute('aria-label',closed?'展开地区菜单':'收起地区菜单');
+ sidebar.querySelector('.sidebar-inner').inert=closed;
+}
+const compactScreen=matchMedia('(max-width:700px), (max-height:500px)');
+setSidebar(compactScreen.matches);
+compactScreen.addEventListener('change',e=>setSidebar(e.matches));
+collapseBtn.addEventListener('click',()=>setSidebar(!sidebar.classList.contains('collapsed')));
 function handleArea(areaKey){
-  if(!worldView.classList.contains('active')){if(areaKey==='polam')openPoLam();else openPlaceholder(areaKey);return;} const pin=document.querySelector('.pin[data-area="'+areaKey+'"]'); if(pin)worldZoom.style.transformOrigin=pin.style.left+' '+pin.style.top; updateActiveArea(areaKey); worldZoom.classList.add('zooming');setTimeout(()=>{worldZoom.classList.remove('zooming');if(areaKey==='polam')openPoLam();else openPlaceholder(areaKey);},650);
+ if(traveling)return;
+ updateActiveArea(areaKey);
+ if(compactScreen.matches)setSidebar(true);
+ const enter=()=>{if(areaKey==='polam')openPoLam();else openPlaceholder(areaKey);document.querySelector('.view.active').classList.add('arriving');};
+ if(!worldView.classList.contains('active')){enter();return;}
+ const pin=document.querySelector('.pin[data-area="'+areaKey+'"]');
+ if(pin)worldZoom.style.transformOrigin=pin.style.left+' '+pin.style.top;
+ traveling=true;worldZoom.classList.add('zooming');document.querySelector('.stage').classList.add('traveling');
+ travelTimer=setTimeout(enter,matchMedia('(prefers-reduced-motion:reduce)').matches?0:840);
 }
 
 document.querySelectorAll('[data-area]').forEach(el=>{
@@ -312,7 +351,7 @@ document.getElementById('backFromPlaceholder').addEventListener('click', ()=>set
 
 document.querySelectorAll('[data-poi]').forEach(el=>{
   el.addEventListener('click', ()=>{
-    const key = el.dataset.poi;
+    const key = el.dataset.poi; if(compactScreen.matches)setSidebar(true);
     infoPanel.querySelector('h3').textContent = el.textContent.trim().split(/\s+/).slice(0,4).join(' ');
     infoText.textContent = poiInfo[key] || '该地点说明稍后补充。'; modalTitle.textContent=el.textContent.trim(); modalText.textContent=infoText.textContent; modal.classList.add('open');
     document.querySelectorAll('#poiList .item').forEach(btn=>btn.classList.toggle('active', btn.dataset.poi === key));
