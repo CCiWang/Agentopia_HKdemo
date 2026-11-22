@@ -11,3 +11,10 @@ Game adaptation of the official L1 Atrium A+B venue plan. Not a navigation map o
 Source: https://www.metrocityplaza.com/xml/images/ExhibitionArea/1/FloorPlan/1/MCP2%28L1%29AtriumA_B.pdf
 
 To change a shop, edit its `name`, `unit` and `category` in `shops.js`. To adjust the game layout, edit `x`, `y`, `w`, `h` and `door`. No image regeneration is needed to rename shops.
+
+## Black-pink multi-floor prototype
+
+- G and L2 are explicitly fictional game layouts, with temporary unit identifiers, until reference floor plans are supplied. They do not claim real tenants or coordinates. L1 keeps the reference data.
+- `shop-room-neon.png` is the unbranded black-pink imagegen variant; prompt: `neon-generation-prompt.txt`.
+- `movement.js`: WASD/arrow keys, on-screen directional buttons, floor-click BFS routing, room/atrium/scenery collision, and camera follow. Floor switching resets the avatar to a clear public walkway.
+- `map.js` contains `prototypeFloor()` for the two concept floors; replace those definitions with verified per-floor shop data later.
